@@ -2,7 +2,7 @@
   <div>
     <div>
       <ul>
-        <li v-for="(item,idx) in items" :key="idx" @click="reorder(item)">
+        <li v-for="(item, idx) in data" :key="idx" @click="reorder(item)">
           {{ item }}
         </li>
       </ul>
@@ -11,6 +11,11 @@
 </template>
 <script>
 export default {
+  data() {
+    return {
+      data: this.items || [],
+    };
+  },
   props: {
     items: {
       required: true,
@@ -19,14 +24,14 @@ export default {
   },
   methods: {
     reorder(i) {
-      const idx = this.items.indexOf(i);
+      const idx = this.data.indexOf(i);
+      console.log('reorder -> idx', idx);
       if (idx !== 0) {
-        const temp = this.items[0];
-        this.items[0] = this.items[idx];
-        this.items[idx] = temp;
+        const temp = this.data[0];
+        this.data[0] = this.data[idx];
+        this.data[idx] = temp;
       }
-
-      console.log(this.items);
+      this.data = this.data.slice();
     },
   },
 };
