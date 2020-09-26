@@ -1,17 +1,16 @@
 <template>
-  <div id="app">
-    <img alt="Vue logo" src="./assets/logo.png">
-    <HelloWorld msg="Welcome to Your Vue.js App"/>
+  <div>
+    <reorderable-list :items="['A', 'B', 'C']"/>
   </div>
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld.vue';
+import reorderableList from './components/reorderable.vue';
 
 export default {
   name: 'App',
   components: {
-    HelloWorld,
+    reorderableList,
   },
 };
 </script>
